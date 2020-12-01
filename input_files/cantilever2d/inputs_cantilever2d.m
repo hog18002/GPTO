@@ -49,7 +49,7 @@ FE.mesh_input.type = 'generate';
 
 % If mesh input type is 'generate', you must specify the dimensions of
 % the rectangle/cuboid and the number of elements along each direction:
-FE.mesh_input.box_dimensions = [20 10];
+FE.mesh_input.box_dimensions = [40 10];
 FE.mesh_input.elements_per_side = [128 64];
 
 % If mesh input type is 'read-home-made', you must provide a
@@ -99,8 +99,8 @@ FE.mesh_input.gmsh_filename = 'input_files/cantilever2d/cantilever2d.m';
     % You must specify the lower and upper bounds on the bar radius.  If you 
     % want a design with fixed bar radii, simply set both fields to the same
     % value.
-    GEOM.min_bar_radius = 0.5;
-    GEOM.max_bar_radius = 0.501;
+    GEOM.min_bar_radius = 0.25;
+    GEOM.max_bar_radius = 1;
 %% =======================================================================    
 %% Finite element solver
     FE.analysis.solver.type = 'direct'; % 'direct';  % Options: 'direct' or 'iterative'
@@ -119,12 +119,12 @@ FE.mesh_input.gmsh_filename = 'input_files/cantilever2d/cantilever2d.m';
 %% Optimization problem definition
 % functions:
     % Name of objective function
-    OPT.functions.objective = 'compliance';
+    OPT.functions.objective = 'volume fraction';
     % Names of inequality (<=) constraints
-    OPT.functions.constraints = {'volume fraction'};
+    OPT.functions.constraints = {'compliance'};
     % Inequality constraint (upper) limits vector: should have the
     % constraint limit for each one of the constraints.
-    OPT.functions.constraint_limit = [0.3];
+    OPT.functions.constraint_limit = [4];
 
 %% =======================================================================        
 %% Geometry projection parameters
