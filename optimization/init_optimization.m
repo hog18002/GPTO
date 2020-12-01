@@ -13,6 +13,12 @@ f{1}.function = 'compute_compliance';
 f{2}.name = 'volume fraction';
 f{2}.function = 'compute_volume_fraction';
 
+f{3}.name = "manufacturing cost";
+f{3}.function = "compute_manufacturing_cost";
+
+f{4}.name = "selected point displacement";
+f{4}.function = "compute_selected_point_displacement";
+
 % compare all functions available with the ones specified in inputs.m
 n = length(f);
 m = length(f_list);
